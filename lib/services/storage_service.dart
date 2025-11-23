@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:the_alphermix/models/user.dart';
-import 'package:the_alphermix/models/fusion_result.dart';
+import 'package:the_alchermix/models/user.dart';
+import 'package:the_alchermix/models/fusion_result.dart';
 
 class StorageService {
   static const String _userKey = 'user_data';

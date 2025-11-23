@@ -1,4 +1,4 @@
-# The Alphermix - Architecture Document
+# The Alchermix - Architecture Document
 
 ## App Overview
 A production-ready Flutter app that generates novel business concepts by fusing two unreleased ideas. Features beautiful animations, AI-powered concept generation, uniqueness research, and visual asset creation.

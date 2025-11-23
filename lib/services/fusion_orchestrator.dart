@@ -1,9 +1,9 @@
-import 'package:the_alphermix/models/concept_input.dart';
-import 'package:the_alphermix/models/fusion_result.dart';
-import 'package:the_alphermix/services/openai_service.dart';
-import 'package:the_alphermix/services/replicate_service.dart';
-import 'package:the_alphermix/services/perplexity_service.dart';
-import 'package:the_alphermix/services/storage_service.dart';
+import 'package:the_alchermix/models/concept_input.dart';
+import 'package:the_alchermix/models/fusion_result.dart';
+import 'package:the_alchermix/services/openai_service.dart';
+import 'package:the_alchermix/services/replicate_service.dart';
+import 'package:the_alchermix/services/perplexity_service.dart';
+import 'package:the_alchermix/services/storage_service.dart';
 import 'package:flutter/foundation.dart';
 
 class FusionOrchestrator {

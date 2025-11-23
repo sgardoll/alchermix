@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:the_alphermix/utils/constants.dart';
-import 'package:the_alphermix/screens/api_setup_screen.dart';
-import 'package:the_alphermix/screens/concept_lab_screen.dart';
-import 'package:the_alphermix/services/storage_service.dart';
-import 'package:the_alphermix/theme.dart';
+import 'package:the_alchermix/utils/constants.dart';
+import 'package:the_alchermix/screens/api_setup_screen.dart';
+import 'package:the_alchermix/screens/concept_lab_screen.dart';
+import 'package:the_alchermix/services/storage_service.dart';
+import 'package:the_alchermix/theme.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

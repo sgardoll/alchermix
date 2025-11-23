@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:the_alphermix/models/fusion_result.dart';
-import 'package:the_alphermix/services/storage_service.dart';
-import 'package:the_alphermix/utils/constants.dart';
-import 'package:the_alphermix/utils/haptic_feedback.dart';
-import 'package:the_alphermix/screens/results_dashboard_screen.dart';
+import 'package:the_alchermix/models/fusion_result.dart';
+import 'package:the_alchermix/services/storage_service.dart';
+import 'package:the_alchermix/utils/constants.dart';
+import 'package:the_alchermix/utils/haptic_feedback.dart';
+import 'package:the_alchermix/screens/results_dashboard_screen.dart';
 
 class HistoryScreen extends StatefulWidget {
   const HistoryScreen({super.key});

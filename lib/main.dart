@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:the_alphermix/theme.dart';
-import 'package:the_alphermix/screens/splash_screen.dart';
+import 'package:the_alchermix/theme.dart';
+import 'package:the_alchermix/screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'The Alphermix',
+      title: 'The Alchermix',
       debugShowCheckedModeBanner: false,
       theme: lightTheme,
       darkTheme: darkTheme,

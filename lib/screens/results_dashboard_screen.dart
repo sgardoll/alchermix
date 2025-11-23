@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:the_alphermix/models/fusion_result.dart';
-import 'package:the_alphermix/screens/concept_lab_screen.dart';
-import 'package:the_alphermix/utils/constants.dart';
-import 'package:the_alphermix/utils/haptic_feedback.dart';
+import 'package:the_alchermix/models/fusion_result.dart';
+import 'package:the_alchermix/screens/concept_lab_screen.dart';
+import 'package:the_alchermix/utils/constants.dart';
+import 'package:the_alchermix/utils/haptic_feedback.dart';
 
 class ResultsDashboardScreen extends StatefulWidget {
   final FusionResult result;

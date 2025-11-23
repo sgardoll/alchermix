@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:the_alphermix/models/concept_input.dart';
-import 'package:the_alphermix/screens/fusion_processing_screen.dart';
-import 'package:the_alphermix/screens/api_setup_screen.dart';
-import 'package:the_alphermix/screens/history_screen.dart';
-import 'package:the_alphermix/utils/constants.dart';
-import 'package:the_alphermix/utils/haptic_feedback.dart';
-import 'package:the_alphermix/widgets/glassmorphic_card.dart';
-import 'package:the_alphermix/widgets/fusion_button.dart';
+import 'package:the_alchermix/models/concept_input.dart';
+import 'package:the_alchermix/screens/fusion_processing_screen.dart';
+import 'package:the_alchermix/screens/api_setup_screen.dart';
+import 'package:the_alchermix/screens/history_screen.dart';
+import 'package:the_alchermix/utils/constants.dart';
+import 'package:the_alchermix/utils/haptic_feedback.dart';
+import 'package:the_alchermix/widgets/glassmorphic_card.dart';
+import 'package:the_alchermix/widgets/fusion_button.dart';
 
 class ConceptLabScreen extends StatefulWidget {
   const ConceptLabScreen({super.key});

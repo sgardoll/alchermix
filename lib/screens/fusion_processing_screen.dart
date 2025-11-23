@@ -1,15 +1,15 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:the_alphermix/models/concept_input.dart';
-import 'package:the_alphermix/models/fusion_result.dart';
-import 'package:the_alphermix/services/fusion_orchestrator.dart';
-import 'package:the_alphermix/services/storage_service.dart';
-import 'package:the_alphermix/services/openai_service.dart';
-import 'package:the_alphermix/services/replicate_service.dart';
-import 'package:the_alphermix/services/perplexity_service.dart';
-import 'package:the_alphermix/screens/results_dashboard_screen.dart';
-import 'package:the_alphermix/utils/constants.dart';
-import 'package:the_alphermix/utils/haptic_feedback.dart';
+import 'package:the_alchermix/models/concept_input.dart';
+import 'package:the_alchermix/models/fusion_result.dart';
+import 'package:the_alchermix/services/fusion_orchestrator.dart';
+import 'package:the_alchermix/services/storage_service.dart';
+import 'package:the_alchermix/services/openai_service.dart';
+import 'package:the_alchermix/services/replicate_service.dart';
+import 'package:the_alchermix/services/perplexity_service.dart';
+import 'package:the_alchermix/screens/results_dashboard_screen.dart';
+import 'package:the_alchermix/utils/constants.dart';
+import 'package:the_alchermix/utils/haptic_feedback.dart';
 import 'package:flutter/foundation.dart';
 
 class FusionProcessingScreen extends StatefulWidget {

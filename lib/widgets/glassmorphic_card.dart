@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:the_alphermix/utils/constants.dart';
+import 'package:the_alchermix/utils/constants.dart';
 
 class GlassmorphicCard extends StatelessWidget {
   final Widget child;

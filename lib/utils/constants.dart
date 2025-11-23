@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:the_alphermix/theme.dart';
+import 'package:the_alchermix/theme.dart';
 
 class AppConstants {
-  static const String appName = 'The Alphermix';
+  static const String appName = 'The Alchermix';
   static const String tagline = 'Where Ideas Collide';
   
   static const double borderRadius = 24.0;

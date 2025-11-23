@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:the_alphermix/utils/constants.dart';
+import 'package:the_alchermix/utils/constants.dart';
 
 class FusionButton extends StatefulWidget {
   final bool isEnabled;

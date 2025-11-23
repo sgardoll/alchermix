@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:the_alphermix/models/user.dart';
-import 'package:the_alphermix/services/storage_service.dart';
-import 'package:the_alphermix/screens/concept_lab_screen.dart';
-import 'package:the_alphermix/utils/constants.dart';
-import 'package:the_alphermix/utils/haptic_feedback.dart';
-import 'package:the_alphermix/theme.dart';
+import 'package:the_alchermix/models/user.dart';
+import 'package:the_alchermix/services/storage_service.dart';
+import 'package:the_alchermix/screens/concept_lab_screen.dart';
+import 'package:the_alchermix/utils/constants.dart';
+import 'package:the_alchermix/utils/haptic_feedback.dart';
+import 'package:the_alchermix/theme.dart';
 
 class ApiSetupScreen extends StatefulWidget {
   const ApiSetupScreen({super.key});
