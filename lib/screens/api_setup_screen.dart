@@ -5,6 +5,7 @@ import 'package:the_alphermix/services/storage_service.dart';
 import 'package:the_alphermix/screens/concept_lab_screen.dart';
 import 'package:the_alphermix/utils/constants.dart';
 import 'package:the_alphermix/utils/haptic_feedback.dart';
+import 'package:the_alphermix/theme.dart';
 
 class ApiSetupScreen extends StatefulWidget {
   const ApiSetupScreen({super.key});
@@ -74,6 +75,8 @@ class _ApiSetupScreenState extends State<ApiSetupScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final gradientTheme = Theme.of(context).extension<FusionGradientTheme>();
+    final onGradient = gradientTheme?.onGradient ?? Theme.of(context).colorScheme.onPrimary;
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -88,18 +91,18 @@ class _ApiSetupScreenState extends State<ApiSetupScreen> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   const SizedBox(height: 40),
-                  Icon(Icons.key, size: 80, color: Colors.white).animate()
+                  Icon(Icons.key, size: 80, color: onGradient).animate()
                     .scale(duration: 600.ms, curve: Curves.elasticOut),
                   const SizedBox(height: 24),
                   Text(
                     'API Configuration',
-                    style: Theme.of(context).textTheme.displaySmall?.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+                    style: Theme.of(context).textTheme.displaySmall?.copyWith(color: onGradient, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
                   ).animate().fadeIn(delay: 200.ms).slideY(begin: 0.2, end: 0),
                   const SizedBox(height: 12),
                   Text(
                     'Enter your API keys to unlock the fusion magic',
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.white.withValues(alpha: 0.9)),
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: onGradient.withValues(alpha: 0.9)),
                     textAlign: TextAlign.center,
                   ).animate().fadeIn(delay: 300.ms),
                   const SizedBox(height: 48),
@@ -134,8 +137,8 @@ class _ApiSetupScreenState extends State<ApiSetupScreen> {
                   ElevatedButton(
                     onPressed: _isLoading ? null : _saveAndContinue,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      foregroundColor: Theme.of(context).colorScheme.primary,
+                      backgroundColor: Theme.of(context).colorScheme.surface,
+                      foregroundColor: Theme.of(context).colorScheme.onSurface,
                       padding: const EdgeInsets.symmetric(vertical: 18),
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                       elevation: 8,
@@ -149,7 +152,7 @@ class _ApiSetupScreenState extends State<ApiSetupScreen> {
                   
                   Text(
                     '🔒 Your API keys are stored securely on device',
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.white.withValues(alpha: 0.8)),
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(color: onGradient.withValues(alpha: 0.8)),
                     textAlign: TextAlign.center,
                   ).animate().fadeIn(delay: 800.ms),
                 ],
@@ -177,22 +180,24 @@ class _ApiKeyField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final gradientTheme = Theme.of(context).extension<FusionGradientTheme>();
+    final onGradient = gradientTheme?.onGradient ?? Theme.of(context).colorScheme.onPrimary;
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.15),
+        color: onGradient.withValues(alpha: 0.15),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.white.withValues(alpha: 0.3)),
+        border: Border.all(color: onGradient.withValues(alpha: 0.3)),
       ),
       child: TextFormField(
         controller: controller,
-        style: const TextStyle(color: Colors.white),
+        style: TextStyle(color: onGradient),
         obscureText: true,
         decoration: InputDecoration(
           labelText: label,
           hintText: hint,
-          labelStyle: TextStyle(color: Colors.white.withValues(alpha: 0.9)),
-          hintStyle: TextStyle(color: Colors.white.withValues(alpha: 0.5)),
-          prefixIcon: Icon(icon, color: Colors.white.withValues(alpha: 0.9)),
+          labelStyle: TextStyle(color: onGradient.withValues(alpha: 0.9)),
+          hintStyle: TextStyle(color: onGradient.withValues(alpha: 0.5)),
+          prefixIcon: Icon(icon, color: onGradient.withValues(alpha: 0.9)),
           border: InputBorder.none,
           contentPadding: const EdgeInsets.all(20),
         ),

@@ -1,62 +1,109 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// A theme extension to carry brand gradients and ideal foreground on gradients
+class FusionGradientTheme extends ThemeExtension<FusionGradientTheme> {
+  final Color gradientStart;
+  final Color gradientEnd;
+  final Color onGradient;
+
+  const FusionGradientTheme({
+    required this.gradientStart,
+    required this.gradientEnd,
+    required this.onGradient,
+  });
+
+  static FusionGradientTheme light() => const FusionGradientTheme(
+        gradientStart: LightModeColors.lightFusionGradientStart,
+        gradientEnd: LightModeColors.lightFusionGradientEnd,
+        onGradient: Colors.white, // high contrast on gradient in light mode
+      );
+
+  static FusionGradientTheme dark() => const FusionGradientTheme(
+        gradientStart: DarkModeColors.darkFusionGradientStart,
+        gradientEnd: DarkModeColors.darkFusionGradientEnd,
+        onGradient: Colors.white, // keep white for strong contrast on dark gradients
+      );
+
+  @override
+  FusionGradientTheme copyWith({
+    Color? gradientStart,
+    Color? gradientEnd,
+    Color? onGradient,
+  }) => FusionGradientTheme(
+        gradientStart: gradientStart ?? this.gradientStart,
+        gradientEnd: gradientEnd ?? this.gradientEnd,
+        onGradient: onGradient ?? this.onGradient,
+      );
+
+  @override
+  ThemeExtension<FusionGradientTheme> lerp(
+      covariant ThemeExtension<FusionGradientTheme>? other, double t) {
+    if (other is! FusionGradientTheme) return this;
+    return FusionGradientTheme(
+      gradientStart: Color.lerp(gradientStart, other.gradientStart, t) ?? gradientStart,
+      gradientEnd: Color.lerp(gradientEnd, other.gradientEnd, t) ?? gradientEnd,
+      onGradient: Color.lerp(onGradient, other.onGradient, t) ?? onGradient,
+    );
+  }
+}
+
 class LightModeColors {
-  // Original vibrant palette: purple → pink with cyan accent
-  static const lightPrimary = Color(0xFF6B4CE6); // purple
+  // Neutral, balanced palette focusing on teal + slate with a warm accent
+  static const lightPrimary = Color(0xFF3A7D8C); // muted teal-blue
   static const lightOnPrimary = Color(0xFFFFFFFF);
-  static const lightPrimaryContainer = Color(0xFFE7E1FF); // soft purple tint
-  static const lightOnPrimaryContainer = Color(0xFF20124D);
+  static const lightPrimaryContainer = Color(0xFFD2ECEA); // soft mint container
+  static const lightOnPrimaryContainer = Color(0xFF0F2A2A);
 
-  static const lightSecondary = Color(0xFFFF6B9D); // pink
-  static const lightOnSecondary = Color(0xFF3A0320);
+  static const lightSecondary = Color(0xFF6B7C93); // slate blue-gray
+  static const lightOnSecondary = Color(0xFFFFFFFF);
 
-  static const lightTertiary = Color(0xFF00D9FF); // cyan accent
-  static const lightOnTertiary = Color(0xFF002B33);
+  static const lightTertiary = Color(0xFFE8B86A); // warm sand accent
+  static const lightOnTertiary = Color(0xFF3A2E00);
 
   static const lightError = Color(0xFFB3261E);
   static const lightOnError = Color(0xFFFFFFFF);
   static const lightErrorContainer = Color(0xFFF9DEDC);
   static const lightOnErrorContainer = Color(0xFF410E0B);
 
-  static const lightInversePrimary = Color(0xFFB7A7FF);
+  static const lightInversePrimary = Color(0xFF8BCAD2);
   static const lightShadow = Color(0xFF000000);
   static const lightSurface = Color(0xFFFCFCFC);
   static const lightOnSurface = Color(0xFF1A1A1A);
   static const lightAppBarBackground = Color(0xFFFCFCFC);
 
   // Accent gradients for emphasis
-  static const lightFusionGradientStart = Color(0xFF6B4CE6);
-  static const lightFusionGradientEnd = Color(0xFFFF6B9D);
-  static const lightAccentGlow = Color(0xFF00D9FF);
+  static const lightFusionGradientStart = Color(0xFF3A7D8C);
+  static const lightFusionGradientEnd = Color(0xFFE8B86A);
+  static const lightAccentGlow = Color(0xFF2BD9C8);
 }
 
 class DarkModeColors {
-  static const darkPrimary = Color(0xFFB7A7FF); // lighter purple for dark bg
-  static const darkOnPrimary = Color(0xFF1B1440);
-  static const darkPrimaryContainer = Color(0xFF3F2E96);
-  static const darkOnPrimaryContainer = Color(0xFFE7E1FF);
+  static const darkPrimary = Color(0xFF8BCAD2); // lighter teal for dark bg
+  static const darkOnPrimary = Color(0xFF0D2322);
+  static const darkPrimaryContainer = Color(0xFF235A5F);
+  static const darkOnPrimaryContainer = Color(0xFFD2ECEA);
 
-  static const darkSecondary = Color(0xFFFF9BC0); // pink tint
-  static const darkOnSecondary = Color(0xFF3A0320);
+  static const darkSecondary = Color(0xFFB7C1CD); // slate tint
+  static const darkOnSecondary = Color(0xFF1B232A);
 
-  static const darkTertiary = Color(0xFF66E6FF); // cyan accent
-  static const darkOnTertiary = Color(0xFF002B33);
+  static const darkTertiary = Color(0xFFF1D09E); // warm sand accent
+  static const darkOnTertiary = Color(0xFF3A2E00);
 
   static const darkError = Color(0xFFFFB4AB);
   static const darkOnError = Color(0xFF690005);
   static const darkErrorContainer = Color(0xFF93000A);
   static const darkOnErrorContainer = Color(0xFFFFDAD6);
 
-  static const darkInversePrimary = Color(0xFF6B4CE6);
+  static const darkInversePrimary = Color(0xFF3A7D8C);
   static const darkShadow = Color(0xFF000000);
   static const darkSurface = Color(0xFF0F1113);
   static const darkOnSurface = Color(0xFFE8E8E8);
   static const darkAppBarBackground = Color(0xFF0F1113);
 
-  static const darkFusionGradientStart = Color(0xFF6B4CE6);
-  static const darkFusionGradientEnd = Color(0xFFFF6B9D);
-  static const darkAccentGlow = Color(0xFF00D9FF);
+  static const darkFusionGradientStart = Color(0xFF3A7D8C);
+  static const darkFusionGradientEnd = Color(0xFFE8B86A);
+  static const darkAccentGlow = Color(0xFF2BD9C8);
 }
 
 class FontSizes {
@@ -98,6 +145,9 @@ ThemeData get lightTheme => ThemeData(
     onSurface: LightModeColors.lightOnSurface,
   ),
   brightness: Brightness.light,
+  extensions: <ThemeExtension<dynamic>>[
+    FusionGradientTheme.light(),
+  ],
   appBarTheme: AppBarTheme(
     backgroundColor: LightModeColors.lightAppBarBackground,
     foregroundColor: LightModeColors.lightOnPrimaryContainer,
@@ -227,6 +277,9 @@ ThemeData get darkTheme => ThemeData(
     onSurface: DarkModeColors.darkOnSurface,
   ),
   brightness: Brightness.dark,
+  extensions: <ThemeExtension<dynamic>>[
+    FusionGradientTheme.dark(),
+  ],
   appBarTheme: AppBarTheme(
     backgroundColor: DarkModeColors.darkAppBarBackground,
     foregroundColor: DarkModeColors.darkOnPrimaryContainer,

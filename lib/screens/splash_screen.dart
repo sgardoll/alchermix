@@ -4,6 +4,7 @@ import 'package:the_alphermix/utils/constants.dart';
 import 'package:the_alphermix/screens/api_setup_screen.dart';
 import 'package:the_alphermix/screens/concept_lab_screen.dart';
 import 'package:the_alphermix/services/storage_service.dart';
+import 'package:the_alphermix/theme.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -50,6 +51,8 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
 
   @override
   Widget build(BuildContext context) {
+    final gradientTheme = Theme.of(context).extension<FusionGradientTheme>();
+    final onGradient = gradientTheme?.onGradient ?? Theme.of(context).colorScheme.onPrimary;
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -62,7 +65,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
               Icon(
                 Icons.auto_awesome,
                 size: 120,
-                color: Colors.white,
+                color: onGradient,
               ).animate()
                 .scale(begin: const Offset(0, 0), end: const Offset(1.2, 1.2), duration: 400.ms, curve: Curves.elasticOut)
                 .then()
@@ -73,7 +76,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
               Text(
                 AppConstants.appName,
                 style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                  color: Colors.white,
+                  color: onGradient,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 2,
                 ),
@@ -86,7 +89,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
               _TypewriterText(
                 text: AppConstants.tagline,
                 textStyle: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  color: Colors.white.withValues(alpha: 0.9),
+                  color: onGradient.withValues(alpha: 0.9),
                   letterSpacing: 1,
                 ),
               ).animate(delay: 800.ms),

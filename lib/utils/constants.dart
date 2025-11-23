@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:the_alphermix/theme.dart';
 
 class AppConstants {
   static const String appName = 'The Alphermix';
@@ -25,13 +26,13 @@ class AppConstants {
   ];
   
   static LinearGradient getFusionGradient(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final gradientTheme = Theme.of(context).extension<FusionGradientTheme>();
+    final start = gradientTheme?.gradientStart ?? Theme.of(context).colorScheme.primary;
+    final end = gradientTheme?.gradientEnd ?? Theme.of(context).colorScheme.tertiary;
     return LinearGradient(
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
-      colors: isDark
-        ? [const Color(0xFF6B4CE6), const Color(0xFFFF6B9D)]
-        : [const Color(0xFF6B4CE6), const Color(0xFFFF6B9D)],
+      colors: [start, end],
     );
   }
   
