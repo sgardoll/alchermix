@@ -145,14 +145,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              theme.colorScheme.primary.withValues(alpha: 0.12),
-              theme.colorScheme.surface,
-            ],
-          ),
+          // Use the brand gradient so the background fills fully with no white gap
+          gradient: AppConstants.getFusionGradient(context),
         ),
         child: SafeArea(
           child: Column(

@@ -57,14 +57,8 @@ class _ResultsDashboardScreenState extends State<ResultsDashboardScreen> {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Theme.of(context).colorScheme.primary.withValues(alpha: 0.15),
-              Theme.of(context).colorScheme.surface,
-            ],
-          ),
+          // Use the app's brand gradient to avoid light surface gaps at the bottom
+          gradient: AppConstants.getFusionGradient(context),
         ),
         child: SafeArea(
           child: Stack(
