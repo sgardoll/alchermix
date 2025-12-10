@@ -120,74 +120,78 @@ class _FusionButtonState extends State<FusionButton>
             // Glow intensity based on activation
             final double glowOpacity = activateT;
 
-            return Stack(
-              alignment: Alignment.center,
-              children: [
-                // Base button with animated gradient transition
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.symmetric(vertical: 20),
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: <Color>[currentStart, currentEnd],
+            return SizedBox(
+              height: 68,
+              width: double.infinity,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  // Base button with animated gradient transition
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: <Color>[currentStart, currentEnd],
+                      ),
+                      borderRadius: BorderRadius.circular(AppConstants.borderRadius),
+                      boxShadow: glowOpacity > 0
+                          ? [
+                              BoxShadow(
+                                color: colorScheme.primary.withValues(alpha: 0.4 * glowOpacity),
+                                blurRadius: 16 * glowOpacity,
+                                spreadRadius: 2 * glowOpacity,
+                              ),
+                            ]
+                          : [],
                     ),
-                    borderRadius: BorderRadius.circular(AppConstants.borderRadius),
-                    boxShadow: glowOpacity > 0
-                        ? [
-                            BoxShadow(
-                              color: colorScheme.primary.withValues(alpha: 0.4 * glowOpacity),
-                              blurRadius: 16 * glowOpacity,
-                              spreadRadius: 2 * glowOpacity,
-                            ),
-                          ]
-                        : [],
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.auto_awesome,
-                        color: onGradientColor.withValues(alpha: 0.5 + 0.5 * activateT),
-                        size: 28,
-                      ),
-                      const SizedBox(width: 12),
-                      Text(
-                        'FUSE CONCEPTS',
-                        style: theme.textTheme.titleLarge?.copyWith(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.auto_awesome,
                           color: onGradientColor.withValues(alpha: 0.5 + 0.5 * activateT),
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 1.5,
+                          size: 28,
                         ),
-                      ),
-                    ],
+                        const SizedBox(width: 12),
+                        Text(
+                          'FUSE CONCEPTS',
+                          style: theme.textTheme.titleLarge?.copyWith(
+                            color: onGradientColor.withValues(alpha: 0.5 + 0.5 * activateT),
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: 1.5,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
 
-                // Shimmer overlay: fades in with activation
-                if (activateT > 0.3)
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(AppConstants.borderRadius),
-                    child: IgnorePointer(
-                      child: Opacity(
-                        opacity: ((activateT - 0.3) / 0.7).clamp(0.0, 1.0),
-                        child: Align(
-                          alignment: Alignment(sweepX, 0),
-                          child: FractionallySizedBox(
-                            widthFactor: 0.38,
-                            heightFactor: 1.2,
-                            child: DecoratedBox(
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
-                                  colors: [
-                                    Colors.white.withValues(alpha: 0.0),
-                                    Colors.white.withValues(alpha: 0.18),
-                                    Colors.white.withValues(alpha: 0.0),
-                                  ],
-                                  stops: const [0.0, 0.5, 1.0],
+                  // Shimmer overlay: fades in with activation
+                  if (activateT > 0.3)
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(AppConstants.borderRadius),
+                      child: IgnorePointer(
+                        child: Opacity(
+                          opacity: ((activateT - 0.3) / 0.7).clamp(0.0, 1.0),
+                          child: Align(
+                            alignment: Alignment(sweepX, 0),
+                            child: FractionallySizedBox(
+                              widthFactor: 0.38,
+                              heightFactor: 1.2,
+                              child: DecoratedBox(
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                    colors: [
+                                      Colors.white.withValues(alpha: 0.0),
+                                      Colors.white.withValues(alpha: 0.18),
+                                      Colors.white.withValues(alpha: 0.0),
+                                    ],
+                                    stops: const [0.0, 0.5, 1.0],
+                                  ),
                                 ),
                               ),
                             ),
@@ -195,8 +199,8 @@ class _FusionButtonState extends State<FusionButton>
                         ),
                       ),
                     ),
-                  ),
-              ],
+                ],
+              ),
             );
           },
         ),
