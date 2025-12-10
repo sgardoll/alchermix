@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 import 'package:the_alchermix/utils/constants.dart';
 import 'package:the_alchermix/theme.dart';
 
@@ -99,7 +98,7 @@ class _FusionButtonState extends State<FusionButton>
             final onGradientColor = fusion?.onGradient ?? colorScheme.onPrimary;
             final start = fusion?.gradientStart ?? colorScheme.primary;
             final end = fusion?.gradientEnd ??
-                (colorScheme.tertiary ?? colorScheme.primaryContainer);
+                (colorScheme.tertiary);
 
             // Activation progress (0 = disabled look, 1 = fully enabled)
             final double activateT = _activateAnimation.value;

@@ -9,6 +9,7 @@ import 'package:the_alchermix/utils/haptic_feedback.dart';
 import 'package:the_alchermix/widgets/glassmorphic_card.dart';
 import 'package:the_alchermix/widgets/fusion_button.dart';
 import 'package:the_alchermix/theme.dart';
+import 'package:the_alchermix/services/storage_service.dart';
 
 class ConceptLabScreen extends StatefulWidget {
   const ConceptLabScreen({super.key});
@@ -27,7 +28,6 @@ class _ConceptLabScreenState extends State<ConceptLabScreen>
   bool _showDetailsA = false;
   bool _showDetailsB = false;
   bool _isConceptAFocused = false;
-  bool _isConceptBFocused = false;
 
   late AnimationController _pulseController;
 
@@ -54,10 +54,33 @@ class _ConceptLabScreenState extends State<ConceptLabScreen>
       _conceptAController.text.trim().isNotEmpty &&
       _conceptBController.text.trim().isNotEmpty;
 
-  void _fuseConcepts() {
+  Future<void> _fuseConcepts() async {
     if (!_isValid) return;
 
     HapticHelper.medium();
+    debugPrint('FUSE tapped | A="${_conceptAController.text.trim()}" | B="${_conceptBController.text.trim()}"');
+
+    // Preflight: ensure API keys are configured before navigating
+    final storage = StorageService();
+    final user = await storage.getUser();
+    if (!mounted) return;
+
+    if (user == null || !user.hasAllApiKeys) {
+      debugPrint('API keys missing -> redirecting to ApiSetupScreen');
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Add your API keys to run fusion.'),
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
+      await Future.delayed(const Duration(milliseconds: 150));
+      if (!mounted) return;
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (_) => const ApiSetupScreen()),
+      );
+      return;
+    }
+
     final input = ConceptInput(
       conceptA: _conceptAController.text.trim(),
       conceptADetails: _conceptADetailsController.text.trim(),
@@ -68,7 +91,8 @@ class _ConceptLabScreenState extends State<ConceptLabScreen>
 
     Navigator.of(context).push(
       MaterialPageRoute(
-          builder: (context) => FusionProcessingScreen(input: input)),
+        builder: (context) => FusionProcessingScreen(input: input),
+      ),
     );
   }
 
@@ -127,13 +151,19 @@ class _ConceptLabScreenState extends State<ConceptLabScreen>
                 ),
               ),
               Expanded(
-                child: SingleChildScrollView(
-                    padding: const EdgeInsets.all(24),
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    return SingleChildScrollView(
+                        padding: const EdgeInsets.all(24),
+                        child: ConstrainedBox(
+                            constraints: BoxConstraints(
+                              minHeight: constraints.maxHeight,
+                            ),
+                            child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
                           GlassmorphicCard(
                                   isFocused: _isConceptAFocused,
                                   child:
@@ -271,8 +301,6 @@ class _ConceptLabScreenState extends State<ConceptLabScreen>
                                         const SizedBox(height: 16),
                                         Focus(
                                             onFocusChange: (focused) {
-                                              setState(() =>
-                                                  _isConceptBFocused = focused);
                                               if (focused)
                                                 HapticHelper.selection();
                                             },
@@ -356,7 +384,9 @@ class _ConceptLabScreenState extends State<ConceptLabScreen>
                                   duration: 420.ms,
                                   curve: Curves.easeOutCubic),
                           const SizedBox(height: 24)
-                        ])),
+                        ])));
+                  },
+                ),
               ),
             ],
           ),
